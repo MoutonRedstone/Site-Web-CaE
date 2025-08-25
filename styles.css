@@ -1,0 +1,77 @@
+footer
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0% max(1%, 5px);
+    background-color: darkgrey;
+    display: flex;
+    justify-content: space-between;
+    height: 110px;
+}
+
+footer p
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    align-content: center;
+}
+
+footer img
+{
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    margin: 5px;
+}
+
+label
+{
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+input
+{
+    font-size: 2.5rem;
+    line-height: 2rem;
+    box-sizing: border-box;  
+}
+
+#resultMessage
+{
+    font-size: 2rem;
+    font-style: italic;
+}
+
+#locks
+{
+    min-height:40vh;
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+}
+
+#locks div
+{
+    flex-grow: 1;
+    margin: 2px;
+    border-radius: 20px;
+    padding: 2%;
+    text-align: center;
+    align-content: center;
+    flex-grow: 0;
+}
+
+#locks .closed{
+    background-color: red;
+}
+
+#locks .open{
+    background-color: green;
+}
