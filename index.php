@@ -2,16 +2,16 @@
     $COOKIE_NAME = "affiches"; // L'avancement de l'utilisateur est sauvegardé dans un cookie nommé "affiches"
 
     $affiches = array(
-        "Résidences" => "placeholder1",
-        "Bat.5 (C.R.I.)" => "Felicitations",
-        "Kfêt & FOY'" => "mojito",
+        "Résidences" => "DIEGO",
+        "Bat.5 (C.R.I.)" => "FELICITATIONS",
+        "Kfêt & FOY'" => "MOJITO",
         "Halle Francis Querné" => "19",
         "Bat.2 (STPI)" => "ENIGME",
-        "Restaurant Universitaire" => "placeholder2",
+        "Restaurant Universitaire" => "PAELLA",
         "Bat. 9 (S.I.)" => "ROBOT",
-        "Amphi M. Drissi" => "placeholder3",
-        "Amphis A,B,C" => "placeholder4",
-        "Bibl'INSA" => "placeholder5"
+        "Amphi M. Drissi" => "SAVOIR",
+        "Amphis A,B,C" => "HELP",
+        "Bibl'INSA" => "RENNES"
     ); // Liste des affiches et du mot de passe lié
 
     function encodeAndSetCookie($values): void // La fonction chiffre les affiches trouvées (pour pas qu'il trichent) et envoie le cookie
