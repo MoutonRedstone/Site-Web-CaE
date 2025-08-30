@@ -1,77 +1,268 @@
-footer
-{
+/* ===========================
+   IMPORTS
+=========================== */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+
+
+/* ===========================
+   GLOBAL
+=========================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    text-align: center;
+    background: white;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #185a9d;
+}
+
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+header .logo {
+    height: 60px;
+    width: auto;
+    border-radius: 50%;
+}
+
+
+/* ===========================
+   PASSWORD BOX
+=========================== */
+.password-box {
+    border: 2px solid #ccd;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 1rem auto;
+    background: #f8faff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.password-box p {
+    margin-bottom: 0.5rem;
+}
+
+/* Règles */
+.rules {
+    margin: 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+/* ===========================
+   INPUTS & FORMS
+=========================== */
+input[type="password"] {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #b0b0b0;
+    margin-right: 1rem;
+    width: 250px;
+    max-width: 90vw;
+}
+input[type="submit"] {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    background: #185a9d;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+input[type="submit"]:hover {
+    background: #43cea2;
+    color: #fff;
+}
+
+button {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    background: #185a9d;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+button:hover {
+    background: #43cea2;
+    color: #fff;
+}
+
+
+/* ===========================
+   FEEDBACK MESSAGE
+=========================== */
+#resultMessage {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-top: 1rem;
+    color: #007222;
+    min-height: 2.2rem;
+}
+
+
+/* ===========================
+   LOCKS
+=========================== */
+#locks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+
+    background: #f0f0f0;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+
+    overflow: visible; /* <-- important */
+    position: relative;
+}
+
+
+#locks div {
+    flex: 1 1 160px;         /* taille plus petite et responsive */
+    max-width: 180px;
+    min-width: 140px;
+
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid #e0e0e0;
+    background: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#locks .closed {
+    background: #ffdddd;
+    color: #b71c1c;
+    border-color: #ff5858;
+}
+
+#locks .open {
+    background: #e0ffe0;
+    color: #1b5e20;
+    border-color: #43cea2;
+}
+
+#locks div:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+
+/* ===========================
+   TOOLTIP
+=========================== */
+.lock-card {
+    position: relative;
+}
+.custom-tooltip {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;      /* prend toute la largeur du lock */
+    height: 100%;     /* prend toute la hauteur du lock */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(34, 40, 49, 0.95); /* semi-transparent */
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 12px;  /* même que le lock */
+    opacity: 0;
+    pointer-events: none;  /* clic passe au lock */
+    transition: opacity 0.2s;
+    z-index: 9999;
+    text-align: center;
+    padding: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   OVERLAY IMAGE
+=========================== */
+#overlayImage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* au-dessus de tout */
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+#overlayImage img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0% max(1%, 5px);
-    background-color: darkgrey;
+    padding: 0.5rem 2vw;
+    background: #222831;
+    color: #fff;
     display: flex;
     justify-content: space-between;
-    height: 110px;
-}
-
-footer p
-{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 1.5rem;
-    align-content: center;
-}
-
-footer img
-{
-    width: 100px;
-    height: 100px;
-    padding: 0;
-    margin: 5px;
-}
-
-label
-{
-    font-size: 2rem;
-    line-height: 2rem;
-}
-
-input
-{
-    font-size: 2.5rem;
-    line-height: 2rem;
-    box-sizing: border-box;  
-}
-
-#resultMessage
-{
-    font-size: 2rem;
-    font-style: italic;
-}
-
-#locks
-{
-    min-height:40vh;
-    display:flex;
-    flex-wrap: wrap;
-    width:100%;
-    justify-content: space-around;
     align-items: center;
-    align-content: stretch;
+    height: 90px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    z-index: 10;
 }
-
-#locks div
-{
-    flex-grow: 1;
-    margin: 2px;
-    border-radius: 20px;
-    padding: 2%;
-    text-align: center;
-    align-content: center;
-    flex-grow: 0;
+footer p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 400;
 }
-
-#locks .closed{
-    background-color: red;
-}
-
-#locks .open{
-    background-color: green;
+footer img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-left: 1rem;
 }
