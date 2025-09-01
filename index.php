@@ -62,7 +62,7 @@ if (isset($_POST["password"])) {
         for ($i = 0; $i < count($affiches); $i++) {
             $nomAffiche = array_keys($affiches)[$i];
             $password = $affiches[$nomAffiche];
-            if (normalize($password) === normalize($input)) {
+            if ($password === $input) {
                 $affichesTrouvées[$i] = '1';
                 encodeAndSetCookie($affichesTrouvées);
                 $feedbackMessage = "Bravo ! Vous avez déverrouillé le cadenas \"$nomAffiche\"";
@@ -112,8 +112,8 @@ if ($hasSolvedEverything) {
 
     <?php
     if ($hasSolvedEverything) {
-        echo "<h3>Bravo ! Vous avez résolu toutes les énigmes !!!</h3>" .
-            "<button onclick='window.location.href=\"/resultat_chasse_au_trésor.html\"'>Ta récompense</button>";
+        echo "<h3>Bravo ! Tu as complété toutes les énigmes ! Contacte-nous sur instagram pour recevoir ta récompense<br>".
+             "<a href=\"https://www.instagram.com/inscape_game_rennes?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\">@inscape_game_rennes</h3>";
     }
     ?>
 
