@@ -113,7 +113,7 @@ if ($hasSolvedEverything) {
     <?php
     if ($hasSolvedEverything) {
         echo "<h3>Bravo ! Tu as complété toutes les énigmes ! Contacte-nous sur instagram pour recevoir ta récompense<br>".
-             "<a href=\"https://www.instagram.com/inscape_game_rennes?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\">@inscape_game_rennes</h3>";
+             "<a href=\"https://www.instagram.com/inscape_game_rennes?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\">@inscape_game_rennes</a></h3>";
     }
     ?>
 
